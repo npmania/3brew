@@ -1,5 +1,4 @@
 import { writable } from 'svelte/store';
-import { pathOr } from '../utils/common';
 import i18n from '../translation/i18n.json';
 
 export const LANGUAGE_LIST = ['en', 'be', 'de', 'fil', 'it', 'ru', 'pl', 'pt',];
@@ -21,3 +20,13 @@ export function setLanguage(lang = 'en') {
     translations.set({ tt: i18n[lang], language: lang });
   }
 }
+
+function pathOr(obj, path, defaultVal) {
+	path = stringToPath(path);
+	let current = obj;
+	for (let i = 0; i < path.length; i++) {
+		if (!current[path[i]]) return defaultVal;
+		current = current[path[i]];
+	}
+	return current;
+};

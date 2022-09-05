@@ -1,0 +1,34 @@
+[
+  {
+    "name": "coffee-collective",
+    "title": "Coffee Collective",
+    "notes": "details: https://www.youtube.com/watch?v=Vuh6Zg1Qric",
+    "ingridients": {
+      "coffee": 32,
+      "water": 500,
+      "grind": 5,
+      "temp": "92-95",
+      "time": 160
+    },
+    "steps": [
+      {
+        "type": "pour",
+        "amount": 60,
+        "time": 7
+      },
+      {
+        "type": "bloom",
+        "time": 23
+      },
+      {
+        "type": "pour",
+        "amount": 440,
+        "time": 75
+      },
+      {
+        "type": "wait",
+        "time": 60
+      }
+    ]
+  }
+]

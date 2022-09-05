@@ -1,6 +1,7 @@
 import {tt} from '../store/tt';
 
 import aeropress from '../assets/icons/aeropress.svg';
+import wave from '../assets/icons/wave.svg';
 import moka from '../assets/icons/moka.svg';
 import frenchPress from '../assets/icons/frenchpress.svg';
 import v60 from '../assets/icons/v60.svg';
@@ -30,6 +31,8 @@ export function resolveSystemIcon(type) {
     case 'v_60':
     case 'v60':
       return v60;
+    case 'wave':
+      return wave;
     case 'moka':
       return moka;
     case 'aeropress':
@@ -89,14 +92,4 @@ function stringToPath(path) {
     });
   });
   return output;
-};
-
-export function pathOr(obj, path, defaultVal) {
-	path = stringToPath(path);
-	let current = obj;
-	for (let i = 0; i < path.length; i++) {
-		if (!current[path[i]]) return defaultVal;
-		current = current[path[i]];
-	}
-	return current;
 };

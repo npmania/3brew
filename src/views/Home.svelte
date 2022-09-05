@@ -10,8 +10,12 @@
     },
     { name: "system.v60", url: "v_60", icon: resolveSystemIcon("v_60") },
     { name: "system.moka", url: "moka", icon: resolveSystemIcon("moka") },
-    { name: "system.frenchPress", url: "frenchPress", icon:
-      resolveSystemIcon("frenchPress")}
+    { name: "system.wave", url: "wave", icon: resolveSystemIcon("wave") },
+    {
+      name: "system.frenchPress",
+      url: "frenchPress",
+      icon: resolveSystemIcon("frenchPress"),
+    },
   ];
   const languages = LANGUAGE_LIST;
   let selectedLang = $translations.language;
@@ -21,6 +25,52 @@
   }
 </script>
 
+<nav>
+  <div>
+    {#each systems as item}
+      <div class="item">
+        <a
+          class="system-button bh"
+          href="#/{item.url}"
+          title={tt($translations, item.name)}
+        >
+          <div class="system-icon">
+            {@html item.icon}
+          </div>
+          <div class="system-name">{tt($translations, item.name)}</div>
+        </a>
+      </div>
+    {/each}
+  </div>
+</nav>
+
+<main>
+  <div class="author-info">
+    Have your own recipe? Just propose it in
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href="https://github.com/2brew/2brew.github.io/issues">issues</a
+    >!
+    <br />
+    Want to contribute?
+    <br />
+    Welcome to the repository:
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href="https://github.com/2brew/2brew.github.io"
+      >github.com/2brew/2brew.github.io</a
+    >.
+  </div>
+</main>
+
+<select bind:value={selectedLang} class="lang bb" on:change={toggleLang}>
+  {#each languages as language}
+    <option value={language}>{language}</option>
+  {/each}
+</select>
+
 <style>
   .item {
     width: 33.3%;
@@ -29,9 +79,6 @@
     float: left;
     margin-top: 10px;
     position: relative;
-  }
-  .item:last-of-type {
-    padding-right: 0;
   }
   .system-button {
     display: flex;
@@ -78,45 +125,3 @@
     color: var(--water-color);
   }
 </style>
-
-<nav>
-  <div>
-    {#each systems as item}
-      <div class="item">
-        <a
-          class="system-button bh"
-          href="#/{item.url}"
-          title={tt($translations, item.name)}>
-          <div class="system-icon">
-            {@html item.icon}
-          </div>
-          <div class="system-name">{tt($translations, item.name)}</div>
-        </a>
-      </div>
-    {/each}
-  </div>
-</nav>
-
-<main>
-  <div class="author-info">
-    Have your own recipe? Just propose it in
-    <a
-      target="_blank"
-      rel="noreferrer"
-      href="https://github.com/2brew/2brew.github.io/issues">issues</a>!
-    <br />
-    Want to contribute?
-    <br />
-    Welcome to the repository:
-    <a
-      target="_blank"
-      rel="noreferrer"
-      href="https://github.com/2brew/2brew.github.io">github.com/2brew/2brew.github.io</a>.
-  </div>
-</main>
-
-<select bind:value={selectedLang} class="lang bb" on:change={toggleLang}>
-  {#each languages as language}
-    <option value={language}>{language}</option>
-  {/each}
-</select>
