@@ -17,6 +17,7 @@
     nextStep,
     destroyTimer,
     fetchCurrentRecipe,
+    refreshRecipe,
     calculateWater,
   } from "../store/timer";
   import { tt, translations } from "../store/tt";
@@ -33,9 +34,11 @@
   export let params = {};
 
   let pausedTime = false;
+  let coffeeAmount;
 
-  onMount(() => {
-    fetchCurrentRecipe(params.type, params.name);
+  onMount(async () => {
+    await fetchCurrentRecipe(params.type, params.name);
+    coffeeAmount = $recipe.ingridients.coffee;
   });
 
   onDestroy(() => {
@@ -109,6 +112,16 @@
       {$recipe.notes}
     </div>
   {/if}
+  <div class="recipe-amount-flex">
+    <span class="recipe-amount">{tt($translations, "global.amount")}</span>
+    <input
+      class="recipe-amount-input"
+      type="number"
+      step="1"
+      bind:value={coffeeAmount}
+      on:input={refreshRecipe(coffeeAmount)}
+    />
+  </div>
   <div class="timer-wrapper">
     {#if $timer.step !== null && $timer.step < $recipe.steps.length - 1}
       <div
@@ -377,6 +390,32 @@
   .recipe-title {
     font-size: 20px;
     padding-top: 10px;
+  }
+  .recipe-amount-flex {
+    display: inline-flex;
+    vertical-align: middle;
+  }
+  .recipe-amount {
+    color: var(--second-text-color);
+    margin: auto;
+  }
+  .recipe-amount-input {
+    background-color: var(--default-box-color);
+    border: 2px solid var(--default-box-color);
+    font-size: 1rem;
+    margin-left: 5px;
+    width: 2ch;
+    border-radius: 0.5rem;
+  }
+  .recipe-amount-input:focus {
+    outline: none;
+  }
+  .recipe-amount-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .recipe-amount-input[type="number"] {
+    -moz-appearance: textfield;
   }
   .recipe-info {
     display: flex;

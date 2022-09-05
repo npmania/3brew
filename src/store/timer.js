@@ -9,6 +9,10 @@ let interval
 const stage = new Audio('/public/audio/stage.wav')
 const end = new Audio('/public/audio/end.wav')
 
+function rounded_multiply (a, b) {
+  return (a * b).toFixed(2).replace(/0+$/, '').replace(/\.$/, '')
+}
+
 export const recipe = writable({
   title: null,
   notes: null,
@@ -47,6 +51,36 @@ export const fetchCurrentRecipe = async (type, name) => {
   } else {
     recipe.set({ steps: [], ingridients: {}, error: { response: { status: 404, statusText: 'Not Found' } }, isFetching: false })
   }
+}
+
+export const refreshRecipe = (coffeeAmount) => {
+  if (coffeeAmount === null || coffeeAmount === 0) {
+    console.log(coffeeAmount)
+    return
+  }
+  const ratio = coffeeAmount / currentRecipe.ingridients.coffee
+  const calculatedIngredients = {
+    ...currentRecipe.ingridients,
+    water: rounded_multiply(currentRecipe.ingridients.water, ratio),
+    coffee: coffeeAmount
+  }
+  const calculatedSteps = currentRecipe.steps.map((step) => {
+    if (step.type === 'pour') {
+      return {
+        ...step,
+        amount: rounded_multiply(step.amount, ratio)
+      }
+    }
+    return step
+  })
+  recipe.set({
+    title: currentRecipe.title,
+    notes: currentRecipe.notes,
+    ingridients: calculatedIngredients,
+    steps: calculatedSteps,
+    error: null,
+    isFetching: false
+  })
 }
 
 export const startTimer = (initialStep = 0, time) => {
