@@ -1,5 +1,5 @@
 <script>
-  import {onMount} from 'svelte';
+  import { onMount } from "svelte";
   export let error;
 
   onMount(() => console.error(error));
@@ -16,7 +16,7 @@
   </div>
   {#if error.message}
     <p class="info">
-      {error.name ? error.name + ': ' : ''}{error.message}
+      {error.name ? error.name + ": " : ""}{error.message}
     </p>
   {/if}
 </div>
@@ -30,7 +30,7 @@
     margin: 5px 0;
     border-radius: 10px;
   }
-  .heading{
+  .heading {
     font-size: 18px;
     font-weight: bold;
   }

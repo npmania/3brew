@@ -1,7 +1,7 @@
 [
   {
     "name": "boring",
-    "title": "Boring", 
+    "title": "Boring",
     "ingridients": {
       "coffee": 20,
       "water": 300,
@@ -41,7 +41,7 @@
   },
   {
     "name": "tetsu-kasuya",
-    "title": "Tetsu Kasuya", 
+    "title": "Tetsu Kasuya",
     "notes": "More info: https://en.philocoffea.com/blogs/blog/coffee-brewing-method",
     "ingridients": {
       "coffee": 20,

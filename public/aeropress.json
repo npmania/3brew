@@ -1,7 +1,7 @@
 [
   {
     "name": "standrard",
-    "title": "Standard", 
+    "title": "Standard",
     "notes": "",
     "ingridients": {
       "coffee": 16,
@@ -42,7 +42,7 @@
   },
   {
     "name": "coarse-inverted",
-    "title": "Coarse inverted", 
+    "title": "Coarse inverted",
     "notes": "Last 40 ml pour - with room temperature",
     "ingridients": {
       "coffee": 35,
@@ -89,7 +89,7 @@
   },
   {
     "name": "inverted",
-    "title": "Simple inverted", 
+    "title": "Simple inverted",
     "notes": "",
     "ingridients": {
       "coffee": 20,
@@ -134,7 +134,7 @@
   },
   {
     "name": "classic-espresso",
-    "title": "Classic espresso style", 
+    "title": "Classic espresso style",
     "notes": "Recipe from instruction. Not a real espresso just a small cup of coffee",
     "ingridients": {
       "coffee": 15,
@@ -174,7 +174,7 @@
   },
   {
     "name": "real-espresso",
-    "title": "Like real espresso", 
+    "title": "Like real espresso",
     "notes": "Use metal filter. Found this recipe in the internet: https://www.youtube.com/watch?v=_nx_NN6xZH0 . Be prepared and use strong cup",
     "ingridients": {
       "coffee": 9,

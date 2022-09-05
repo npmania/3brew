@@ -1,15 +1,15 @@
 <script>
-  import {push, link} from 'svelte-spa-router'
+  import { push, link } from "svelte-spa-router";
   export let href;
   export let nomargin;
 </script>
 
 <div class="back">
-  <a class="back-button bh" class:no-margin={nomargin} href="{href}" use:link>❮</a>
+  <a class="back-button bh" class:no-margin={nomargin} {href} use:link>❮</a>
 </div>
 
 <style>
- .back {
+  .back {
     width: 100%;
     display: flex;
   }
