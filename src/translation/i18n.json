@@ -320,5 +320,47 @@
       "heat": "Riscalda l'acqua",
       "filter": "Metti il filtro"
     }
+  },
+  "ko": {
+    "system": {
+      "aeropress": "에어로프레스",
+      "moka": "모카포트",
+      "v60": "하리오 V60",
+      "wave": "칼리타 웨이브 185",
+      "frenchPress": "프렌치 프레스"
+    },
+    "global": {
+      "g": "g",
+      "ml": "ml",
+      "loading": "로드 중...",
+      "paused": "일시정지",
+      "enjoy": "맛있게 드세요",
+      "inverted": "역방향",
+      "amount": "원두 양 (g):"
+    },
+    "grind": [
+      "에스프레소",
+      "아주 가늘게",
+      "가늘게",
+      "약간 가늘게",
+      "중간",
+      "약간 굵게",
+      "굵게"
+    ],
+    "step": {
+      "pour": "물 붓기",
+      "add": "원두 담기",
+      "stir": "젓기",
+      "wait": "기다리기",
+      "place": "플런저 얹기",
+      "press": "누르기",
+      "bloom": "뜸 들이기",
+      "lid": "뚜껑 씌우기",
+      "swirl": "흔들기",
+      "invert": "뒤집기",
+      "brew": "추출하기",
+      "heat": "물 끓이기",
+      "filter": "필터 씌우기"
+    }
   }
 }
