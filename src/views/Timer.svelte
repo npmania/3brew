@@ -35,15 +35,21 @@
 
   let pausedTime = false;
   let coffeeAmount;
+  let coffeeAmountString;
 
   onMount(async () => {
     await fetchCurrentRecipe(params.type, params.name);
     coffeeAmount = $recipe.ingridients.coffee;
+    coffeeAmountString = coffeeAmount;
   });
 
   onDestroy(() => {
     destroyTimer();
   });
+
+  function validateValue(coffeeAmountString) {
+    coffeeAmount = coffeeAmountString;
+  }
 
   function goToNext() {
     pausedTime = false;
@@ -118,8 +124,12 @@
       class="recipe-amount-input"
       type="number"
       step="1"
-      bind:value={coffeeAmount}
-      on:input={refreshRecipe(coffeeAmount)}
+      min="0"
+      max="100"
+      bind:value={coffeeAmountString}
+      on:input={() => {
+        validateValue(coffeeAmountString); refreshRecipe(coffeeAmount);
+      }}
     />
   </div>
   <div class="timer-wrapper">
@@ -404,8 +414,9 @@
     border: 2px solid var(--default-box-color);
     font-size: 1rem;
     margin-left: 5px;
-    width: 2ch;
-    border-radius: 0.5rem;
+    text-align: right;
+    width: 5ch;
+    border-radius: 0.25rem;
   }
   .recipe-amount-input:focus {
     outline: none;

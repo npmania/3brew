@@ -9,8 +9,14 @@ let interval
 const stage = new Audio('/public/audio/stage.wav')
 const end = new Audio('/public/audio/end.wav')
 
+let currentRecipe
+
+function round_number (num) {
+  return num.toFixed(2).replace(/0+$/, '').replace(/\.$/, '')
+}
+
 function rounded_multiply (a, b) {
-  return (a * b).toFixed(2).replace(/0+$/, '').replace(/\.$/, '')
+  return round_number(a * b)
 }
 
 export const recipe = writable({
@@ -42,7 +48,6 @@ export const clearRecipe = () => {
 }
 
 export const fetchCurrentRecipe = async (type, name) => {
-  let currentRecipe = null
   recipe.set({ title: null, notes: null, steps: [], ingridients: {}, error: null, isFetching: true })
   await fetchRecipes(type)
   currentRecipe = get(recipes)[type] ? get(recipes)[type].find((item) => item.name === name) : null
@@ -54,15 +59,13 @@ export const fetchCurrentRecipe = async (type, name) => {
 }
 
 export const refreshRecipe = (coffeeAmount) => {
-  if (coffeeAmount === null || coffeeAmount === 0) {
-    console.log(coffeeAmount)
-    return
-  }
+  // null - checking for all browsers, others - checking for webkit browsers. html5 -> min 0, max 100
+  if (coffeeAmount === null || coffeeAmount === 0 || coffeeAmount < 0 || coffeeAmount > 100) return
   const ratio = coffeeAmount / currentRecipe.ingridients.coffee
   const calculatedIngredients = {
     ...currentRecipe.ingridients,
     water: rounded_multiply(currentRecipe.ingridients.water, ratio),
-    coffee: coffeeAmount
+    coffee: round_number(coffeeAmount)
   }
   const calculatedSteps = currentRecipe.steps.map((step) => {
     if (step.type === 'pour') {
