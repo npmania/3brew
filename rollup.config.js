@@ -6,6 +6,7 @@ import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
 import svg from 'rollup-plugin-svg'
 import css from 'rollup-plugin-css-only'
+import fs from 'fs'
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -26,8 +27,17 @@ export default {
     }),
     // we'll extract any component CSS out into
     // a separate file - better for performance
+    // sort minified css output: https://github.com/dfinity/nns-dapp/pull/430
     css({
-      output: 'bundle.css'
+      output: (styles, stylesNodes) => {
+        if (!fs.existsSync('public/build')) {
+          fs.mkdirSync('public/build', { recursive: true })
+        }
+        fs.writeFileSync(
+          'public/build/bundle.css',
+          Object.values(stylesNodes).sort().join('')
+        )
+      }
     }),
     svg(),
     json(),
