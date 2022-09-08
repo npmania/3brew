@@ -1,12 +1,11 @@
 <script>
-  import { onMount, onDestroy } from "svelte";
-  import { scale, fade } from "svelte/transition";
-  import NoSleep from "nosleep.js";
+  import { onMount, onDestroy } from 'svelte'
+  import { scale, fade } from 'svelte/transition'
 
-  import Error from "../components/Error.svelte";
-  import Loader from "../components/Loader.svelte";
-  import Back from "../components/Back.svelte";
-  import { toMSS, resolveStepIcon, getGrindLevel } from "../utils/common";
+  import Error from '../components/Error.svelte'
+  import Loader from '../components/Loader.svelte'
+  import Back from '../components/Back.svelte'
+  import { toMSS, resolveStepIcon, getGrindLevel } from '../utils/common'
   import {
     recipe,
     timer,
@@ -18,57 +17,57 @@
     destroyTimer,
     fetchCurrentRecipe,
     refreshRecipe,
-    calculateWater,
-  } from "../store/timer";
-  import { tt, translations } from "../store/tt";
+    calculateWater
+  } from '../store/timer'
+  import { tt, translations } from '../store/tt'
 
-  import time from "../assets/icons/time.svg";
-  import coffee from "../assets/icons/coffee.svg";
-  import grind from "../assets/icons/grind.svg";
-  import water from "../assets/icons/water.svg";
-  import play from "../assets/icons/play.svg";
-  import stop from "../assets/icons/stop.svg";
-  import next from "../assets/icons/next.svg";
-  import pause from "../assets/icons/pause.svg";
+  import time from '../assets/icons/time.svg'
+  import coffee from '../assets/icons/coffee.svg'
+  import grind from '../assets/icons/grind.svg'
+  import water from '../assets/icons/water.svg'
+  import play from '../assets/icons/play.svg'
+  import stop from '../assets/icons/stop.svg'
+  import next from '../assets/icons/next.svg'
+  import pause from '../assets/icons/pause.svg'
 
-  export let params = {};
+  export let params = {}
 
-  let pausedTime = false;
-  let coffeeAmount;
-  let coffeeAmountString;
+  let pausedTime = false
+  let coffeeAmount
+  let coffeeAmountString
 
   onMount(async () => {
-    await fetchCurrentRecipe(params.type, params.name);
-    coffeeAmount = $recipe.ingridients.coffee;
-    coffeeAmountString = coffeeAmount;
-  });
+    await fetchCurrentRecipe(params.type, params.name)
+    coffeeAmount = $recipe.ingridients.coffee
+    coffeeAmountString = coffeeAmount
+  })
 
   onDestroy(() => {
-    destroyTimer();
-  });
+    destroyTimer()
+  })
 
-  function validateValue(coffeeAmountString) {
-    coffeeAmount = coffeeAmountString;
+  function validateValue (coffeeAmountString) {
+    coffeeAmount = coffeeAmountString
   }
 
-  function goToNext() {
-    pausedTime = false;
-    nextStep();
+  function goToNext () {
+    pausedTime = false
+    nextStep()
   }
 
-  function toggleTime() {
+  function toggleTime () {
     if ($timer.step !== null) {
       if (pausedTime !== false) {
-        noSleep.enable();
-        startTimer($timer.step, pausedTime);
-        pausedTime = false;
+        noSleep.enable()
+        startTimer($timer.step, pausedTime)
+        pausedTime = false
       } else {
-        pausedTime = pauseTimer();
+        pausedTime = pauseTimer()
       }
     } else {
-      noSleep.enable();
-      startTimer();
-      pausedTime = false;
+      noSleep.enable()
+      startTimer()
+      pausedTime = false
     }
   }
 </script>
@@ -86,13 +85,13 @@
     <div class="recipe-pad recipe-coffee">
       <i>{@html coffee}</i>{$recipe.ingridients.coffee}{tt(
         $translations,
-        "global.g"
+        'global.g'
       )}
     </div>
     <div class="recipe-pad recipe-water">
       <i>{@html water}</i>{$recipe.ingridients.water}{tt(
         $translations,
-        "global.ml"
+        'global.ml'
       )}
     </div>
     <div class="recipe-pad recipe-grind">
@@ -106,7 +105,7 @@
     </div>
     {#if $recipe.ingridients.inverted}
       <div class="recipe-pad recipe-inverted">
-        {tt($translations, "global.inverted")}
+        {tt($translations, 'global.inverted')}
       </div>
     {/if}
   </div>
@@ -119,7 +118,7 @@
     </div>
   {/if}
   <div class="recipe-amount-flex">
-    <span class="recipe-amount">{tt($translations, "global.amount")}</span>
+    <span class="recipe-amount">{tt($translations, 'global.amount')}</span>
     <input
       class="recipe-amount-input"
       type="number"
@@ -128,7 +127,8 @@
       max="100"
       bind:value={coffeeAmountString}
       on:input={() => {
-        validateValue(coffeeAmountString); refreshRecipe(coffeeAmount);
+        validateValue(coffeeAmountString)
+        refreshRecipe(coffeeAmount)
       }}
     />
   </div>
@@ -148,19 +148,19 @@
       </div>
     {/if}
     <div class="actions timer-water">
-      {parseInt($timer.water)}{tt($translations, "global.ml")}
+      {parseInt($timer.water)}{tt($translations, 'global.ml')}
     </div>
     <div class="timer" on:click={toggleTime}>
       {#if $timer.step !== null}
         {#if pausedTime !== false}
           <div class="timer-top" transition:scale|local>
-            {tt($translations, "global.paused")}
+            {tt($translations, 'global.paused')}
           </div>
           <div class="timer-bottom" transition:scale|local>
             {@html play}
           </div>
         {:else}
-          {#if $timer.step !== null && $recipe.steps[$timer.step].type === "pour"}
+          {#if $timer.step !== null && $recipe.steps[$timer.step].type === 'pour'}
             <div class="timer-top" transition:scale|local>
               <span
                 class="step-water"
@@ -170,7 +170,7 @@
                   0.9}
               >
                 {parseInt($timer.water - calculateWater($recipe, $timer.step))}
-                {tt($translations, "global.ml")}
+                {tt($translations, 'global.ml')}
               </span>
             </div>
           {/if}
@@ -183,14 +183,14 @@
         {#if $timer.time}
           <div class="counter">{toMSS($timer.time)}</div>
         {:else if $timer.done}
-          {tt($translations, "global.enjoy")}
+          {tt($translations, 'global.enjoy')}
         {:else if $timer.time === 0}
           ...
         {:else}
           <div class="timer-button">{@html play}</div>
         {/if}
       </div>
-      {#if $timer.step !== null && $recipe.steps[$timer.step].type === "pour"}
+      {#if $timer.step !== null && $recipe.steps[$timer.step].type === 'pour'}
         <div
           class="water-level"
           out:fade|local
@@ -216,7 +216,7 @@
           </div>
           {#if step.amount}
             <div class="step-amount">
-              {step.amount}{tt($translations, "global.ml")}
+              {step.amount}{tt($translations, 'global.ml')}
             </div>
           {:else if step.notes}
             <div class="step-amount">{step.notes}</div>

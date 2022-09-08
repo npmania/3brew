@@ -11,12 +11,12 @@ const end = new Audio('/public/audio/end.wav')
 
 let currentRecipe
 
-function round_number (num) {
+function roundNumber (num) {
   return num.toFixed(2).replace(/0+$/, '').replace(/\.$/, '')
 }
 
-function rounded_multiply (a, b) {
-  return round_number(a * b)
+function roundedMultiply (a, b) {
+  return roundNumber(a * b)
 }
 
 export const recipe = writable({
@@ -64,14 +64,14 @@ export const refreshRecipe = (coffeeAmount) => {
   const ratio = coffeeAmount / currentRecipe.ingridients.coffee
   const calculatedIngredients = {
     ...currentRecipe.ingridients,
-    water: rounded_multiply(currentRecipe.ingridients.water, ratio),
-    coffee: round_number(coffeeAmount)
+    water: roundedMultiply(currentRecipe.ingridients.water, ratio),
+    coffee: roundNumber(coffeeAmount)
   }
   const calculatedSteps = currentRecipe.steps.map((step) => {
     if (step.type === 'pour') {
       return {
         ...step,
-        amount: rounded_multiply(step.amount, ratio)
+        amount: roundedMultiply(step.amount, ratio)
       }
     }
     return step
@@ -107,7 +107,7 @@ export const startTimer = (initialStep = 0, time) => {
         nextTime = nextTime - 1
         if (nextTime <= 3) {
           // to avoid the situation when sound isn't play because it's still not ended
-          (nextTime % 2 == 0) ? tick.play() : tock.play()
+          (nextTime % 2 === 0) ? tick.play() : tock.play()
         }
         const currentStep = current.steps[ct.step]
         if (currentStep.type === 'pour') { // show water level

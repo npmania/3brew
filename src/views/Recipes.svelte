@@ -1,21 +1,21 @@
 <script>
-  import { link } from "svelte-spa-router";
+  import { link } from 'svelte-spa-router'
 
-  import Error from "../components/Error.svelte";
-  import Back from "../components/Back.svelte";
-  import Loader from "../components/Loader.svelte";
-  import { toMSS, resolveSystemIcon, getGrindLevel } from "../utils/common";
-  import { fetchRecipes, recipes } from "../store/recipes";
-  import { tt, translations } from "../store/tt";
+  import Error from '../components/Error.svelte'
+  import Back from '../components/Back.svelte'
+  import Loader from '../components/Loader.svelte'
+  import { toMSS, resolveSystemIcon, getGrindLevel } from '../utils/common'
+  import { fetchRecipes, recipes } from '../store/recipes'
+  import { tt, translations } from '../store/tt'
 
-  import time from "../assets/icons/time.svg";
-  import coffee from "../assets/icons/coffee.svg";
-  import grind from "../assets/icons/grind.svg";
+  import time from '../assets/icons/time.svg'
+  import coffee from '../assets/icons/coffee.svg'
+  import grind from '../assets/icons/grind.svg'
 
-  export let params = {};
+  export let params = {}
 
   $: {
-    fetchRecipes(params.type);
+    fetchRecipes(params.type)
   }
 </script>
 
@@ -35,11 +35,11 @@
           <div class="recipe-name">{recipe.title}</div>
           <div class="recipe-ingridients">
             <div class="ingridient-data">
-              {recipe.ingridients.water}{tt($translations, "global.ml")}
+              {recipe.ingridients.water}{tt($translations, 'global.ml')}
             </div>
             <i>{@html coffee}</i>
             <div class="ingridient-data">
-              {recipe.ingridients.coffee}{tt($translations, "global.g")}
+              {recipe.ingridients.coffee}{tt($translations, 'global.g')}
             </div>
             <i>{@html time}</i>
             <div class="ingridient-data">{toMSS(recipe.ingridients.time)}</div>

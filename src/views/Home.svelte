@@ -1,27 +1,27 @@
 <script>
-  import { resolveSystemIcon } from "../utils/common";
-  import { translations, tt, setLanguage, LANGUAGE_LIST } from "../store/tt";
+  import { resolveSystemIcon } from '../utils/common'
+  import { translations, tt, setLanguage, LANGUAGE_LIST } from '../store/tt'
 
   const systems = [
     {
-      name: "system.aeropress",
-      url: "aeropress",
-      icon: resolveSystemIcon("aeropress"),
+      name: 'system.aeropress',
+      url: 'aeropress',
+      icon: resolveSystemIcon('aeropress')
     },
-    { name: "system.v60", url: "v_60", icon: resolveSystemIcon("v_60") },
-    { name: "system.moka", url: "moka", icon: resolveSystemIcon("moka") },
-    { name: "system.wave", url: "wave", icon: resolveSystemIcon("wave") },
+    { name: 'system.v60', url: 'v_60', icon: resolveSystemIcon('v_60') },
+    { name: 'system.moka', url: 'moka', icon: resolveSystemIcon('moka') },
+    { name: 'system.wave', url: 'wave', icon: resolveSystemIcon('wave') },
     {
-      name: "system.frenchPress",
-      url: "frenchPress",
-      icon: resolveSystemIcon("frenchPress"),
-    },
-  ];
-  const languages = LANGUAGE_LIST;
-  let selectedLang = $translations.language;
+      name: 'system.frenchPress',
+      url: 'frenchPress',
+      icon: resolveSystemIcon('frenchPress')
+    }
+  ]
+  const languages = LANGUAGE_LIST
+  let selectedLang = $translations.language
 
-  function toggleLang() {
-    setLanguage(selectedLang);
+  function toggleLang () {
+    setLanguage(selectedLang)
   }
 </script>
 

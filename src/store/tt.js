@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store'
+
 import i18n from '../translation/i18n.json'
 
 export const LANGUAGE_LIST = ['en', 'be', 'de', 'fil', 'it', 'ru', 'pl', 'pt', 'ko']
