@@ -4,7 +4,10 @@ import i18n from '../translation/i18n.json'
 
 export const LANGUAGE_LIST = ['en', 'be', 'de', 'fil', 'it', 'ru', 'pl', 'pt', 'ko']
 
-const initialLang = (LANGUAGE_LIST.indexOf(localStorage.getItem('lang')) !== -1) ? localStorage.getItem('lang') : 'en'
+// const initialLang = (LANGUAGE_LIST.indexOf(localStorage.getItem('lang')) !== -1) ? localStorage.getItem('lang') : 'en'
+
+const browserLang = window.navigator.language.split('-')[0]
+const initialLang = (LANGUAGE_LIST.indexOf(browserLang) !== -1) ? browserLang : 'en'
 
 export const translations = writable({
   tt: i18n[initialLang],
@@ -17,7 +20,7 @@ export function tt (ttObj, path, def) {
 
 export function setLanguage (lang = 'en') {
   if (LANGUAGE_LIST.indexOf(lang) !== -1) {
-    localStorage.setItem('lang', lang)
+    // localStorage.setItem('lang', lang)
     translations.set({ tt: i18n[lang], language: lang })
   }
 }
