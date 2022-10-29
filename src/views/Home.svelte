@@ -44,6 +44,24 @@
   </div>
 </nav>
 
+<main>
+  <div class="author-info">
+    Have your own recipe? Just propose it in
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href="https://github.com/npmania/3brew/issues">issues</a>!
+    <br />
+    Want to contribute?
+    <br />
+    Welcome to the repository:
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href="https://github.com/npmania/3brew">github.com/npmania/3brew</a>.
+  </div>
+</main>
+
 <select bind:value={selectedLang} class="lang bb" on:change={toggleLang}>
   {#each languages as language}
     <option value={language}>{language}</option>
@@ -93,5 +111,14 @@
     text-align: center;
     font-size: 17px;
     border: none;
+  }
+  .author-info {
+    width: 100%;
+    color: var(--second-text-color);
+    margin-top: 100px;
+    float: left;
+  }
+  .author-info a {
+    color: var(--water-color);
   }
 </style>
