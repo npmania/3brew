@@ -6,8 +6,8 @@ import { fetchRecipes, recipes } from './recipes'
 export const noSleep = new NoSleep()
 let interval
 
-const stage = new Audio('/public/audio/stage.wav')
-const end = new Audio('/public/audio/end.wav')
+const stage = new Audio('./public/audio/stage.wav')
+const end = new Audio('./public/audio/end.wav')
 
 let currentRecipe
 
@@ -90,8 +90,8 @@ export const startTimer = (initialStep = 0, time) => {
   clearInterval(interval)
   const current = get(recipe)
   const stepNumber = initialStep
-  const tick = new Audio('/public/audio/tick.wav')
-  const tock = new Audio('/public/audio/tick.wav')
+  const tick = new Audio('./public/audio/tick.wav')
+  const tock = new Audio('./public/audio/tick.wav')
 
   if (current.steps.length && current.steps[stepNumber]) {
     timer.set({

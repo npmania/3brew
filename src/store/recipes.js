@@ -8,5 +8,5 @@ export const fetchRecipes = (type, reset) => {
   if (!reset && actualRecipes[type]) {
     return Promise.resolve()
   }
-  return remote(`/public/${type}.json`, {}, recipes, type)
+  return remote(`./public/${type}.json`, {}, recipes, type)
 }
