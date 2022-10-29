@@ -1,7 +1,7 @@
 # PWA 3Brew
 Simple coffee timer, with predefined recipes for AeroPress, V60 and Moka pot.
 
-[3brew.codeberg.page](https://3brew.codeberg.page)
+[npmania.github.io/3brew](https://npmania.github.io/3brew)
 
 ### TODO
 - [ ] improve design
