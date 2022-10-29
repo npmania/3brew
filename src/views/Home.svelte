@@ -60,6 +60,17 @@
       rel="noreferrer"
       href="https://github.com/npmania/3brew">github.com/npmania/3brew</a>.
   </div>
+  <div class="cc-info">
+    Kalita 185 icon by
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href="https://thenounproject.com/masbay02/">masbay02</a>
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href="https://creativecommons.org/licenses/by/2.0/">(CC-BY 2.0)</a>
+  </div>
 </main>
 
 <select bind:value={selectedLang} class="lang bb" on:change={toggleLang}>
@@ -112,13 +123,18 @@
     font-size: 17px;
     border: none;
   }
-  .author-info {
+  .author-info, .cc-info {
+    font-size: 70%;
     width: 100%;
     color: var(--second-text-color);
-    margin-top: 100px;
+    margin-top: 30px;
     float: left;
   }
-  .author-info a {
+  .cc-info {
+    font-size: 55%;
+    margin-top: 10px;
+  }
+  .author-info a, .cc-info a {
     color: var(--water-color);
   }
 </style>
