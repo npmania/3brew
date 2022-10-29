@@ -134,23 +134,23 @@
   </div>
   <div class="timer-wrapper">
     {#if $timer.step !== null && $timer.step < $recipe.steps.length - 1}
-      <div
+      <button
         class="actions bh next-step"
         on:click={goToNext}
         transition:scale|local
       >
         <i>{@html next}</i>
-      </div>
+      </button>
     {/if}
     {#if $timer.step !== null}
-      <div class="actions bh stop" on:click={stopTimer} transition:scale|local>
+      <button class="actions bh stop" on:click={stopTimer} transition:scale|local>
         <i>{@html stop}</i>
-      </div>
+      </button>
     {/if}
     <div class="actions timer-water">
       {parseInt($timer.water)}{tt($translations, 'global.ml')}
     </div>
-    <div class="timer" on:click={toggleTime}>
+    <button class="timer" on:click={toggleTime}>
       {#if $timer.step !== null}
         {#if pausedTime !== false}
           <div class="timer-top" transition:scale|local>
@@ -200,7 +200,7 @@
             100}%"
         />
       {/if}
-    </div>
+    </button>
   </div>
   <div class="steps">
     {#each $recipe.steps as step, index}
@@ -460,5 +460,10 @@
     display: block;
     height: 15px;
     margin-right: 5px;
+  }
+  button {
+    border: 0;
+    outline: 0;
+    padding: 0;
   }
 </style>
