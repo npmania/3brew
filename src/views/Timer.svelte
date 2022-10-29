@@ -245,7 +245,7 @@
   .timer {
     width: 50%;
     border-radius: 50%;
-    box-shadow: 0 0 60px -10px #3e2000;
+    box-shadow: 0 0 20px -5px #5b5b5b;
     background-color: var(--default-box-color);
     position: relative;
     cursor: pointer;
@@ -453,7 +453,7 @@
   }
   .recipe-pad :global(svg g),
   .recipe-pad :global(svg path) {
-    fill: var(--default-box-color);
+    fill: var(--default-ingredient-color);
   }
   .recipe-pad i {
     width: 15px;

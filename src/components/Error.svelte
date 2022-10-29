@@ -24,7 +24,7 @@
 <style>
   .error {
     color: var(--error-color);
-    background: #5a1313;
+    background: #9b2222;
     width: 100%;
     padding: 20px 30px;
     margin: 5px 0;

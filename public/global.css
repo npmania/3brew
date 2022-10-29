@@ -1,14 +1,15 @@
 :root {
 	/* --default-text-color: #faf8ea; */
-	--default-text-color: #222;
-	--second-text-color: #e6e4d2;
-	--default-bg-color: #3a3733;
-	--default-box-color: #e6e4d2;
-	--hover-box-color: #dbd8b9;
-	--second-box-color: #3a3835;
-	--water-color: #47a8d4;
-	--error-color: #f35c5c;
-	--active-color: #80af29;
+	--default-text-color: #111;
+	--second-text-color: #333;
+	--default-bg-color: #ddd;
+	--default-box-color: #c1c1c1;
+	--hover-box-color: #b6b6b6;
+	--second-box-color: #aeaeae;
+	--default-ingredient-color: #606060;
+	--water-color: #1d9dd4;
+	--error-color: #fcc;
+	--active-color: #96d033;
 	--shadow-color: rgba(0,0,0,0.7);
 
   --scroll-bar-color: #c5c5c5;
